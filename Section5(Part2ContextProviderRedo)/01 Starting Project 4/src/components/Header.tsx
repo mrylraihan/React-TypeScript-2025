@@ -1,9 +1,8 @@
-import { useContext } from 'react';
 import Button from './UI/Button.tsx';
-import { TimersContext } from '../store/timers-context.tsx';
+import { useTimersContext } from '../store/timers-context.tsx';
 
 export default function Header() {
-  const ctx = useContext(TimersContext)
+  const ctx = useTimersContext()
   console.log(ctx)
   return (
     <header>
