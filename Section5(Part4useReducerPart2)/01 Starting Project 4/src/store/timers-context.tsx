@@ -1,6 +1,6 @@
 import { createContext, useContext, ReactNode, useReducer } from 'react'
 
-type Timer = {
+export type Timer = {
 	name: string
 	duration: number
 }
@@ -49,11 +49,17 @@ type Action = StartTimersAction | StopTimersAction | AddTimerAction
 
 function timersReducer(state: TimersState, action: Action): TimersState {
     if (action.type === 'ADD_TIMER') {
-			return { ...state, timers: [...state.timers, action.payload] }
+			return {
+				...state,
+				timers: [
+					...state.timers,
+					{ name: action.payload.name, duration: action.payload.duration },
+				],
+			}
 		}else if (action.type === 'START_TIMERS'){
             return { ...state, isRunning: true }
         } else if (action.type === 'STOP_TIMERS'){
-            return { ...state, isRunning: true }
+            return { ...state, isRunning: false }
         } return state
 }
 
@@ -62,8 +68,8 @@ export default function TimersContextProvider({
 }: TimerContextProviderProps) {
 	const [timersState, dispatch] = useReducer(timersReducer, initialState)
 	const ctx: TimersContextValue = {
-		isRunning: false,
-		timers: [],
+		isRunning: timersState.isRunning,
+		timers: timersState.timers,
 		addTimer: (timerData: Timer) => {
 			dispatch({ type: 'ADD_TIMER', payload: timerData })
 		},
