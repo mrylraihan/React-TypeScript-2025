@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 import { get } from './util/http'
 import BlogPosts, { BlogPost } from './components/BlogPosts'
 import fetchingImg from './assets/data-fetching.png'
