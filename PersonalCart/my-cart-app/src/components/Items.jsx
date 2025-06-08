@@ -10,7 +10,7 @@ function Items({ name, price, id, addToCart }) {
 					<h3 className='card-name'>{name}</h3>
 					<div className='card-footer'>
 						<span className='card-price'>${price}</span>
-						<button className='card-button' onClick={()=>addToCart(id, name, price)}>
+						<button className='card-button' onClick={addToCart.bind(this, id, name, price)}>
 							Add to Cart
 						</button>
 					</div>

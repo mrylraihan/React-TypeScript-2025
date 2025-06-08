@@ -10,7 +10,7 @@ const ProductsArr = [
 ]
 function App() {
   const [cart, setCart] = useState([])
-  const [products, setProducts] = useState(ProductsArr)
+  const [products] = useState(ProductsArr)
 
   console.log("cart",cart)
   console.log("products", products)

@@ -13,7 +13,7 @@ function Cart({ cart, removeFromCart }) {
 								<div className='card-footer'>
 									<span className='card-price'>${item.price}</span>
 									<span className='card-price'>X{item.quantity}</span>
-									<button className='card-button' onClick={()=>removeFromCart(item.id)}>Remove to Cart</button>
+									<button className='card-button' onClick={removeFromCart.bind(this,item.id)}>Remove to Cart</button>
 								</div>
 							</div>
 						</div>
